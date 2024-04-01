@@ -1,0 +1,98 @@
+
+<html>
+    <head>
+        <title>Simple Barcode Scanner</title>
+        <script>
+            var barcode = '';
+            var interval;
+            document.addEventListener('keydown', function(evt) {
+                if (interval)
+                    clearInterval(interval);
+                if (evt.code == 'Enter') {
+                    if (barcode)
+                        handleBarcode(barcode);
+                    barcode = '';
+                    return;
+                }
+                if (evt.key != 'Shift')
+                    barcode += evt.key;
+                interval = setInterval(() => barcode = '', 20);
+            });
+
+            function handleBarcode(scanned_barcode) {
+                document.querySelector('#last-barcode').innerHTML = scanned_barcode;
+                //window.location.href = "http://www.w3schools.com";
+                
+               // httpGetAsync('http://fjla.duckdns.org:8081/API/CheckPagoBulto/Check/123231231')
+                LLamarServicio()
+            }
+            
+            /*
+            function httpGetAsync(theUrl, callback)
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() { 
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        callback(xmlHttp.responseText);
+                }
+                xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+                xmlHttp.send(null);
+                              
+            }
+            */
+            
+            function LLamarServicio()
+            {
+            	let xhr = new XMLHttpRequest();
+
+                xhr.open('GET', 'http://fjla.duckdns.org:8081/API/CheckPagoBulto/Check/123231231');
+
+                xhr.responseType = 'json';
+
+                xhr.send();
+
+                // la respuesta es {"message": "Hola, Mundo!"}
+                xhr.onload = function() {
+	                let responseObj = xhr.response;
+	                //alert(responseObj.message); // Hola, Mundo!
+	                //debugger
+	                console.log(responseObj)
+	                
+	                if (responseObj.statusCode == 200){
+	                	window.location.href = "http://www.w3schools.com";
+	                	
+	                	
+	                	
+	                }else{
+	                	
+	                	//500
+	                }
+                 
+	                
+                };
+                
+                
+                
+                
+                
+				                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            
+        </script>
+    </head>
+    <body>
+        <h1>Simple Barcode Scanner</h1>
+        <strong>Last scanned barcode: </strong>
+        <div id="last-barcode"></div>
+    </body>
+</html>
+

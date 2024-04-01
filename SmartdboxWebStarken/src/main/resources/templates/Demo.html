@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <script>
+    
+    //fetchText()
+    
+    const url = 'http://localhost:8081/API/TestController/TEST';
+    
+    fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+    	//---------------------
+    	//console.log(data);
+    	//--AQUI ACTUALIZAR la animacion
+    	document.getElementById("showresulthere").innerHTML = data.message;
+    	    	
+    	
+    	switch (data.status) {
+    	  case 200:
+    	    //OK
+    	    console.log(data.status);
+    	    const url2 = 'http://localhost:8081/API/TestController/TEST';
+    	    
+    	    fetch(url2)
+    	    .then((response) => {
+    	      return response.json();
+    	    })
+    	    .then((data2) => {
+    	    	//---------------------
+    	    	
+    	    	//--AQUI ACTUALIZAR a la segunda animacion
+    	    	document.getElementById("showresulthere").innerHTML = data.message;
+    	    	//console.log(data2);
+    	    	
+    	    	switch (data2.status) {
+    	    	  case 200:
+    	    	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con el valor1
+    	    	    console.log(data2);
+    	    	    break;
+    	    	  case 400:
+    	    		  console.log(data2);
+    	    	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con el valor2
+    	    	    break;
+    	    	  default:
+    	    		  console.log(data2);
+    	    	    //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+    	    	    break;
+    	    	}
+    	    	
+    	    	
+    	    	//window.location.replace("http://www.w3schools.com");
+    	    	//---------------------
+    	    })
+    	    break;
+    	  case 500:
+    		  console.log(data);
+      	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con valorN
+      	   break;
+    	  case 502:
+    		  console.log(data);
+    	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con el valor2
+    	    break;
+    	  case 506:
+    		  console.log(data);
+    	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con valorN
+    	    break;
+    	  case 509:
+    		  console.log(data);
+      	    //Declaraciones ejecutadas cuando el resultado de expresión coincide con valorN
+      	    break;
+    	  default:
+    		  console.log(data);
+    	    //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+    	    break;
+    	}
+    	
+    	
+    	//---------------------
+    })
+    
+   			
+    
+    
+    console.log("sad");
+    </script>
+    
+</head>
+<body>
+
+	<p id="showresulthere">Result will be shown here</p>
+
+    <h1>DEMO 2 3</h1>
+</body>
+</html>
