@@ -27,6 +27,6 @@ Este proyecto Java Spring es una aplicación backend diseñada para controlar la
 ## Contacto
 
 Para más información o preguntas, contáctame a través de:
-- Email: byro.lopez@live.cl
+- Email: byron.lopez@live.cl
 - LinkedIn: www.linkedin.com/in/byronlopezs
 
